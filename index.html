@@ -221,16 +221,14 @@ function tick() {
 tick(); setInterval(tick, 1000);
 
 function abrirPainel(url) {
-  // Salva URL do hub para botão voltar nos painéis
-  sessionStorage.setItem('pmo_hub_url', window.location.href);
-  // Fullscreen antes de navegar
+  // Abre o painel em nova aba em fullscreen
+  const win = window.open(url, '_blank');
+  // Tenta fullscreen na janela atual também
   const el = document.documentElement;
   try {
     if (el.requestFullscreen) el.requestFullscreen();
     else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
   } catch(e) {}
-  // Abre o painel na mesma aba
-  window.location.href = url;
 }
 </script>
 </body>
