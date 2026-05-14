@@ -17,8 +17,9 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg); color: var(--text);
-    font-family: 'Syne', sans-serif; min-height: 100vh;
-    display: flex; flex-direction: column; overflow-x: hidden;
+    font-family: 'Syne', sans-serif;
+    height: 100vh; overflow: hidden;
+    display: flex; flex-direction: column;
   }
   body::before {
     content: ''; position: fixed; inset: 0;
@@ -30,25 +31,27 @@
   body::after {
     content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%);
     width: 700px; height: 400px;
-    background: radial-gradient(ellipse, rgba(0,229,160,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(0,229,160,0.05) 0%, transparent 70%);
     pointer-events: none; z-index: 0;
   }
+
+  /* HEADER */
   header {
-    position: relative; z-index: 10;
+    position: relative; z-index: 10; flex-shrink: 0;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 48px; border-bottom: 1px solid var(--border);
-    background: rgba(11,14,20,0.92); backdrop-filter: blur(16px);
+    padding: 14px 40px; border-bottom: 1px solid var(--border);
+    background: rgba(11,14,20,0.95); backdrop-filter: blur(16px);
   }
-  .logo { display: flex; align-items: center; gap: 14px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
   .logo-badge {
-    width: 40px; height: 40px;
+    width: 34px; height: 34px;
     background: linear-gradient(135deg, #00e5a0, #00b5ae);
-    border-radius: 11px; display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 800; color: #0b0e14;
-    box-shadow: 0 0 20px rgba(0,229,160,0.3);
+    border-radius: 9px; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800; color: #0b0e14;
+    box-shadow: 0 0 16px rgba(0,229,160,0.25);
   }
-  .logo-text { font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
-  .logo-sub { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .logo-text { font-size: 14px; font-weight: 700; }
+  .logo-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
   .header-right {
     font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted);
     display: flex; align-items: center; gap: 8px;
@@ -58,85 +61,105 @@
     animation: pulse 2s ease-in-out infinite;
   }
   @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,229,160,0.4); }
-    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(0,229,160,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,229,160,0.4); }
+    50% { box-shadow: 0 0 0 5px rgba(0,229,160,0); }
   }
+
+  /* MAIN */
   main {
     position: relative; z-index: 1; flex: 1;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 60px 48px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px 40px; gap: 24px;
   }
-  .hero { text-align: center; margin-bottom: 64px; animation: fadeUp 0.6s ease forwards; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+
+  /* HERO */
+  .hero { text-align: center; }
   .hero-eyebrow {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--accent); font-weight: 600; margin-bottom: 12px;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 6px;
   }
   .hero-title {
-    font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 0.95;
-    letter-spacing: 0.04em; color: var(--text); margin-bottom: 16px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1;
+    letter-spacing: 0.04em;
   }
   .hero-title span { color: var(--accent); }
-  .hero-sub { font-size: 14px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.6; }
+  .hero-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* GRID */
   .grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 20px; width: 100%; max-width: 860px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 1100px;
   }
+
+  /* CARD ATIVO */
   .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-    padding: 32px; cursor: pointer; transition: all 0.25s; position: relative;
-    overflow: hidden; animation: fadeUp 0.6s ease forwards; opacity: 0;
-    text-decoration: none; color: inherit; display: block;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; cursor: pointer; transition: all 0.22s; position: relative;
+    overflow: hidden; display: flex; flex-direction: column; gap: 10px;
   }
-  .card:nth-child(1) { animation-delay: 0.1s; }
-  .card:nth-child(2) { animation-delay: 0.2s; }
-  .card:nth-child(3) { animation-delay: 0.3s; }
-  .card:nth-child(4) { animation-delay: 0.4s; }
   .card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 2px; opacity: 0; transition: opacity 0.25s;
+    height: 2px; opacity: 0; transition: opacity 0.22s;
   }
   .card.c1::before { background: linear-gradient(90deg, #00e5a0, #00b5ae); }
   .card.c2::before { background: linear-gradient(90deg, #f5c842, #f59e0b); }
   .card.c3::before { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
   .card.c4::before { background: linear-gradient(90deg, #f472b6, #ec4899); }
-  .card:hover { border-color: var(--muted); transform: translateY(-4px); }
+  .card:hover { border-color: var(--muted); transform: translateY(-3px); }
   .card:hover::before { opacity: 1; }
-  .card.c1:hover { box-shadow: 0 20px 40px rgba(0,229,160,0.08); }
-  .card.c2:hover { box-shadow: 0 20px 40px rgba(245,200,66,0.08); }
-  .card.c3:hover { box-shadow: 0 20px 40px rgba(96,165,250,0.08); }
-  .card.c4:hover { box-shadow: 0 20px 40px rgba(244,114,182,0.08); }
+  .card.c1:hover { box-shadow: 0 12px 30px rgba(0,229,160,0.08); }
+  .card.c2:hover { box-shadow: 0 12px 30px rgba(245,200,66,0.08); }
+  .card.c3:hover { box-shadow: 0 12px 30px rgba(96,165,250,0.08); }
+  .card.c4:hover { box-shadow: 0 12px 30px rgba(244,114,182,0.08); }
+
   .card-icon {
-    width: 48px; height: 48px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; margin-bottom: 20px;
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
   }
   .card.c1 .card-icon { background: rgba(0,229,160,0.12); }
   .card.c2 .card-icon { background: rgba(245,200,66,0.12); }
   .card.c3 .card-icon { background: rgba(96,165,250,0.12); }
   .card.c4 .card-icon { background: rgba(244,114,182,0.12); }
-  .card-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.01em; }
-  .card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
-  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+
+  .card-title { font-size: 14px; font-weight: 700; line-height: 1.2; }
+  .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; flex: 1; }
+
+  .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
   .card-tag {
-    font-family: 'DM Mono', monospace; font-size: 10px;
+    font-family: 'DM Mono', monospace; font-size: 9px;
     text-transform: uppercase; letter-spacing: 0.1em;
-    padding: 4px 10px; border-radius: 20px;
+    padding: 3px 8px; border-radius: 20px;
   }
   .card.c1 .card-tag { background: rgba(0,229,160,0.1); color: #00e5a0; }
   .card.c2 .card-tag { background: rgba(245,200,66,0.1); color: #f5c842; }
   .card.c3 .card-tag { background: rgba(96,165,250,0.1); color: #60a5fa; }
   .card.c4 .card-tag { background: rgba(244,114,182,0.1); color: #f472b6; }
-  .card-arrow { font-size: 18px; color: var(--muted); transition: transform 0.2s, color 0.2s; }
-  .card:hover .card-arrow { transform: translate(3px, -3px); color: var(--text); }
-  footer {
-    position: relative; z-index: 1; text-align: center; padding: 24px;
-    font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace;
-    border-top: 1px solid var(--border);
+  .card-arrow { font-size: 14px; color: var(--muted); transition: transform 0.2s, color 0.2s; }
+  .card:hover .card-arrow { transform: translate(2px, -2px); color: var(--text); }
+
+  /* CARD EM BREVE */
+  .card-soon {
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: 12px; padding: 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    opacity: 0.5;
   }
+  .card-soon .card-icon { background: rgba(255,255,255,0.04); width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .card-soon .card-title { font-size: 14px; font-weight: 700; color: var(--muted); }
+  .card-soon .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; flex: 1; }
+  .card-soon .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+  .soon-tag {
+    font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase;
+    letter-spacing: 0.1em; padding: 3px 8px; border-radius: 20px;
+    background: rgba(255,255,255,0.05); color: var(--muted);
+  }
+
+  /* FULLSCREEN */
   .fs-overlay {
     display: none; position: fixed; inset: 0; z-index: 1000;
     background: var(--bg); flex-direction: column;
@@ -144,17 +167,25 @@
   .fs-overlay.open { display: flex; }
   .fs-bar {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 20px; background: rgba(11,14,20,0.95);
-    border-bottom: 1px solid var(--border); flex-shrink: 0; z-index: 10;
+    padding: 8px 20px; background: rgba(11,14,20,0.98);
+    border-bottom: 1px solid var(--border); flex-shrink: 0;
   }
-  .fs-bar-title { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .fs-bar-title { font-size: 12px; font-weight: 600; color: var(--muted); }
   .fs-close {
-    padding: 6px 16px; border-radius: 7px; border: 1px solid var(--border);
+    padding: 5px 14px; border-radius: 6px; border: 1px solid var(--border);
     background: transparent; color: var(--muted); cursor: pointer;
     font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; transition: all 0.2s;
   }
   .fs-close:hover { color: var(--text); border-color: var(--muted); }
   .fs-frame { flex: 1; border: none; width: 100%; height: 100%; }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 1; flex-shrink: 0;
+    text-align: center; padding: 10px;
+    font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace;
+    border-top: 1px solid var(--border);
+  }
 </style>
 </head>
 <body>
@@ -181,10 +212,12 @@
   </div>
 
   <div class="grid">
+
+    <!-- ATIVOS -->
     <div class="card c1" onclick="abrirPainel('https://villao123.github.io/pmo-dashboard', 'PMO Dashboard')">
       <div class="card-icon">📊</div>
       <div class="card-title">PMO Dashboard</div>
-      <div class="card-desc">Visão geral dos projetos, KPIs de status, atualização de restrições e últimas informações via webhook do Artia.</div>
+      <div class="card-desc">Visão geral dos projetos com KPIs de status, restrições e atualização via webhook do Artia.</div>
       <div class="card-footer">
         <span class="card-tag">Principal</span>
         <span class="card-arrow">↗</span>
@@ -194,7 +227,7 @@
     <div class="card c2" onclick="abrirPainel('https://villao123.github.io/pmo-prazos', 'PMO Prazos')">
       <div class="card-icon">📅</div>
       <div class="card-title">PMO Prazos</div>
-      <div class="card-desc">Monitoramento de prazos estimados. Identifica projetos atrasados e os que vencem nos próximos 30 dias.</div>
+      <div class="card-desc">Projetos atrasados e com vencimento nos próximos 30 dias. Atualizado via webhook.</div>
       <div class="card-footer">
         <span class="card-tag">Prazos</span>
         <span class="card-arrow">↗</span>
@@ -204,27 +237,65 @@
     <div class="card c3" onclick="abrirPainel('https://villao123.github.io/pmo-finan%C3%A7as', 'PMO Financeiro')">
       <div class="card-icon">💰</div>
       <div class="card-title">PMO Financeiro</div>
-      <div class="card-desc">Monitoramento de orçamento por projeto. Detecta estouros de budget comparando realizado + previsto vs. orçado.</div>
+      <div class="card-desc">Monitoramento de orçamento. Detecta estouros comparando realizado + previsto vs. orçado.</div>
       <div class="card-footer">
         <span class="card-tag">Financeiro</span>
         <span class="card-arrow">↗</span>
       </div>
     </div>
 
-    <div class="card c4" onclick="abrirPainel('https://villao123.github.io/pmo-dashboard?view=exec', 'Visão Executiva')">
-      <div class="card-icon">👔</div>
-      <div class="card-title">Visão Executiva</div>
-      <div class="card-desc">Painel simplificado para lideranças. Visão consolidada dos projetos estratégicos sem edição.</div>
+    <div class="card c4" onclick="abrirPainel('https://pmo-monitor.vitormanu-dl05.workers.dev', 'Monitor PMO')">
+      <div class="card-icon">🔔</div>
+      <div class="card-title">Monitor de Projetos</div>
+      <div class="card-desc">Alertas de projetos sem atualização de status e com campo de risco não preenchido.</div>
       <div class="card-footer">
-        <span class="card-tag">Executivo</span>
+        <span class="card-tag">Alertas</span>
         <span class="card-arrow">↗</span>
       </div>
     </div>
+
+    <!-- EM BREVE -->
+    <div class="card-soon">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">Automação de BI</div>
+      <div class="card-desc">Consulta semanal ao BI identificando projetos sem campo de risco preenchido.</div>
+      <div class="card-footer">
+        <span class="soon-tag">Em breve</span>
+      </div>
+    </div>
+
+    <div class="card-soon">
+      <div class="card-icon">📈</div>
+      <div class="card-title">Painel de Conformidade</div>
+      <div class="card-desc">Indicadores de conformidade dos projetos com os padrões definidos pelo PMO.</div>
+      <div class="card-footer">
+        <span class="soon-tag">Em breve</span>
+      </div>
+    </div>
+
+    <div class="card-soon">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Status Reports</div>
+      <div class="card-desc">Geração automática de relatórios de status semanais a partir dos dados do Artia.</div>
+      <div class="card-footer">
+        <span class="soon-tag">Em breve</span>
+      </div>
+    </div>
+
+    <div class="card-soon">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Automações PMO</div>
+      <div class="card-desc">Central de automações de tarefas repetitivas do escritório de projetos.</div>
+      <div class="card-footer">
+        <span class="soon-tag">Em breve</span>
+      </div>
+    </div>
+
   </div>
 </main>
 
 <footer>
-  DB Diagnósticos · PMO Hub · Todos os painéis atualizados via webhook Artia
+  DB Diagnósticos · PMO Hub · Painéis atualizados via webhook Artia
 </footer>
 
 <div class="fs-overlay" id="fsOverlay">
