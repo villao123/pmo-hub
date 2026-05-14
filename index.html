@@ -7,19 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --bg: #0b0e14;
-    --surface: #111520;
-    --border: #1e2535;
-    --text: #e8eaf0;
-    --muted: #5a6278;
-    --accent: #00e5a0;
+    --bg: #0b0e14; --surface: #111520; --border: #1e2535;
+    --text: #e8eaf0; --muted: #5a6278; --accent: #00e5a0;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg); color: var(--text);
-    font-family: 'Syne', sans-serif;
-    height: 100vh; overflow: hidden;
-    display: flex; flex-direction: column;
+    background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif;
+    height: 100vh; overflow: hidden; display: flex; flex-direction: column;
   }
   body::before {
     content: ''; position: fixed; inset: 0;
@@ -34,8 +28,6 @@
     background: radial-gradient(ellipse, rgba(0,229,160,0.05) 0%, transparent 70%);
     pointer-events: none; z-index: 0;
   }
-
-  /* HEADER */
   header {
     position: relative; z-index: 10; flex-shrink: 0;
     display: flex; align-items: center; justify-content: space-between;
@@ -44,11 +36,13 @@
   }
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo-badge {
-    width: 34px; height: 34px;
-    background: linear-gradient(135deg, #00e5a0, #00b5ae);
-    border-radius: 9px; display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 800; color: #0b0e14;
-    box-shadow: 0 0 16px rgba(0,229,160,0.25);
+    width: 34px; height: 34px; position: relative;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .logo-badge svg { position: absolute; inset: 0; }
+  .logo-badge span {
+    position: relative; z-index: 1;
+    font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: #0b0e14;
   }
   .logo-text { font-size: 14px; font-weight: 700; }
   .logo-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -64,38 +58,25 @@
     0%, 100% { box-shadow: 0 0 0 0 rgba(0,229,160,0.4); }
     50% { box-shadow: 0 0 0 5px rgba(0,229,160,0); }
   }
-
-  /* MAIN */
   main {
     position: relative; z-index: 1; flex: 1;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
     padding: 20px 40px; gap: 24px;
   }
-
-  /* HERO */
   .hero { text-align: center; }
   .hero-eyebrow {
     font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--accent); font-weight: 600; margin-bottom: 6px;
   }
   .hero-title {
-    font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1;
-    letter-spacing: 0.04em;
+    font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; letter-spacing: 0.04em;
   }
   .hero-title span { color: var(--accent); }
   .hero-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
-  /* GRID */
   .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    width: 100%;
-    max-width: 1100px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; width: 100%; max-width: 1100px;
   }
-
-  /* CARD ATIVO */
   .card {
     background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
     padding: 20px; cursor: pointer; transition: all 0.22s; position: relative;
@@ -115,7 +96,6 @@
   .card.c2:hover { box-shadow: 0 12px 30px rgba(245,200,66,0.08); }
   .card.c3:hover { box-shadow: 0 12px 30px rgba(96,165,250,0.08); }
   .card.c4:hover { box-shadow: 0 12px 30px rgba(244,114,182,0.08); }
-
   .card-icon {
     width: 38px; height: 38px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center; font-size: 18px;
@@ -124,15 +104,12 @@
   .card.c2 .card-icon { background: rgba(245,200,66,0.12); }
   .card.c3 .card-icon { background: rgba(96,165,250,0.12); }
   .card.c4 .card-icon { background: rgba(244,114,182,0.12); }
-
   .card-title { font-size: 14px; font-weight: 700; line-height: 1.2; }
   .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; flex: 1; }
-
   .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
   .card-tag {
     font-family: 'DM Mono', monospace; font-size: 9px;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    padding: 3px 8px; border-radius: 20px;
+    text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 20px;
   }
   .card.c1 .card-tag { background: rgba(0,229,160,0.1); color: #00e5a0; }
   .card.c2 .card-tag { background: rgba(245,200,66,0.1); color: #f5c842; }
@@ -141,48 +118,19 @@
   .card-arrow { font-size: 14px; color: var(--muted); transition: transform 0.2s, color 0.2s; }
   .card:hover .card-arrow { transform: translate(2px, -2px); color: var(--text); }
 
-  /* CARD EM BREVE */
   .card-soon {
-    background: transparent;
-    border: 1px dashed var(--border);
+    background: transparent; border: 1px dashed rgba(255,255,255,0.06);
     border-radius: 12px; padding: 20px;
-    display: flex; flex-direction: column; gap: 10px;
-    opacity: 0.5;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 160px; gap: 8px;
   }
-  .card-soon .card-icon { background: rgba(255,255,255,0.04); width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-  .card-soon .card-title { font-size: 14px; font-weight: 700; color: var(--muted); }
-  .card-soon .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; flex: 1; }
-  .card-soon .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
-  .soon-tag {
-    font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase;
-    letter-spacing: 0.1em; padding: 3px 8px; border-radius: 20px;
-    background: rgba(255,255,255,0.05); color: var(--muted);
+  .soon-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.08); }
+  .soon-label {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.1);
   }
-
-  /* FULLSCREEN */
-  .fs-overlay {
-    display: none; position: fixed; inset: 0; z-index: 1000;
-    background: var(--bg); flex-direction: column;
-  }
-  .fs-overlay.open { display: flex; }
-  .fs-bar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 8px 20px; background: rgba(11,14,20,0.98);
-    border-bottom: 1px solid var(--border); flex-shrink: 0;
-  }
-  .fs-bar-title { font-size: 12px; font-weight: 600; color: var(--muted); }
-  .fs-close {
-    padding: 5px 14px; border-radius: 6px; border: 1px solid var(--border);
-    background: transparent; color: var(--muted); cursor: pointer;
-    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; transition: all 0.2s;
-  }
-  .fs-close:hover { color: var(--text); border-color: var(--muted); }
-  .fs-frame { flex: 1; border: none; width: 100%; height: 100%; }
-
-  /* FOOTER */
   footer {
-    position: relative; z-index: 1; flex-shrink: 0;
-    text-align: center; padding: 10px;
+    position: relative; z-index: 1; flex-shrink: 0; text-align: center; padding: 10px;
     font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace;
     border-top: 1px solid var(--border);
   }
@@ -192,10 +140,21 @@
 
 <header>
   <div class="logo">
-    <div class="logo-badge">DB</div>
+    <div class="logo-badge">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 30,9.5 30,24.5 17,32 4,24.5 4,9.5" fill="url(#hgrad)"/>
+        <defs>
+          <linearGradient id="hgrad" x1="4" y1="2" x2="30" y2="32" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#00e5a0"/>
+            <stop offset="100%" stop-color="#0891b2"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span>H</span>
+    </div>
     <div>
-      <div class="logo-text">Grupo DB</div>
-      <div class="logo-sub">PMO · Hub</div>
+      <div class="logo-text">PMO Hub</div>
+      <div class="logo-sub">DB Diagnósticos</div>
     </div>
   </div>
   <div class="header-right">
@@ -213,8 +172,7 @@
 
   <div class="grid">
 
-    <!-- ATIVOS -->
-    <div class="card c1" onclick="abrirPainel('https://villao123.github.io/pmo-dashboard', 'PMO Dashboard')">
+    <div class="card c1" onclick="abrirPainel('https://villao123.github.io/pmo-dashboard')">
       <div class="card-icon">📊</div>
       <div class="card-title">PMO Dashboard</div>
       <div class="card-desc">Visão geral dos projetos com KPIs de status, restrições e atualização via webhook do Artia.</div>
@@ -224,7 +182,7 @@
       </div>
     </div>
 
-    <div class="card c2" onclick="abrirPainel('https://villao123.github.io/pmo-prazos', 'PMO Prazos')">
+    <div class="card c2" onclick="abrirPainel('https://villao123.github.io/pmo-prazos')">
       <div class="card-icon">📅</div>
       <div class="card-title">PMO Prazos</div>
       <div class="card-desc">Projetos atrasados e com vencimento nos próximos 30 dias. Atualizado via webhook.</div>
@@ -234,7 +192,7 @@
       </div>
     </div>
 
-    <div class="card c3" onclick="abrirPainel('https://villao123.github.io/pmo-finan%C3%A7as', 'PMO Financeiro')">
+    <div class="card c3" onclick="abrirPainel('https://villao123.github.io/pmo-finan%C3%A7as')">
       <div class="card-icon">💰</div>
       <div class="card-title">PMO Financeiro</div>
       <div class="card-desc">Monitoramento de orçamento. Detecta estouros comparando realizado + previsto vs. orçado.</div>
@@ -244,7 +202,7 @@
       </div>
     </div>
 
-    <div class="card c4" onclick="abrirPainel('https://pmo-monitor.vitormanu-dl05.workers.dev', 'Monitor PMO')">
+    <div class="card c4" onclick="abrirPainel('https://villao123.github.io/pmo-dashboard')">
       <div class="card-icon">🔔</div>
       <div class="card-title">Monitor de Projetos</div>
       <div class="card-desc">Alertas de projetos sem atualização de status e com campo de risco não preenchido.</div>
@@ -254,42 +212,10 @@
       </div>
     </div>
 
-    <!-- EM BREVE -->
-    <div class="card-soon">
-      <div class="card-icon">🤖</div>
-      <div class="card-title">Automação de BI</div>
-      <div class="card-desc">Consulta semanal ao BI identificando projetos sem campo de risco preenchido.</div>
-      <div class="card-footer">
-        <span class="soon-tag">Em breve</span>
-      </div>
-    </div>
-
-    <div class="card-soon">
-      <div class="card-icon">📈</div>
-      <div class="card-title">Painel de Conformidade</div>
-      <div class="card-desc">Indicadores de conformidade dos projetos com os padrões definidos pelo PMO.</div>
-      <div class="card-footer">
-        <span class="soon-tag">Em breve</span>
-      </div>
-    </div>
-
-    <div class="card-soon">
-      <div class="card-icon">📋</div>
-      <div class="card-title">Status Reports</div>
-      <div class="card-desc">Geração automática de relatórios de status semanais a partir dos dados do Artia.</div>
-      <div class="card-footer">
-        <span class="soon-tag">Em breve</span>
-      </div>
-    </div>
-
-    <div class="card-soon">
-      <div class="card-icon">⚙️</div>
-      <div class="card-title">Automações PMO</div>
-      <div class="card-desc">Central de automações de tarefas repetitivas do escritório de projetos.</div>
-      <div class="card-footer">
-        <span class="soon-tag">Em breve</span>
-      </div>
-    </div>
+    <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
+    <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
+    <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
+    <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
 
   </div>
 </main>
@@ -298,14 +224,6 @@
   DB Diagnósticos · PMO Hub · Painéis atualizados via webhook Artia
 </footer>
 
-<div class="fs-overlay" id="fsOverlay">
-  <div class="fs-bar">
-    <span class="fs-bar-title" id="fsTitle"></span>
-    <button class="fs-close" onclick="fecharPainel()">✕ Fechar</button>
-  </div>
-  <iframe class="fs-frame" id="fsFrame" src="" allowfullscreen></iframe>
-</div>
-
 <script>
 function tick() {
   document.getElementById('relogio').textContent =
@@ -313,23 +231,18 @@ function tick() {
 }
 tick(); setInterval(tick, 1000);
 
-function abrirPainel(url, titulo) {
-  const overlay = document.getElementById('fsOverlay');
-  document.getElementById('fsFrame').src = url;
-  document.getElementById('fsTitle').textContent = titulo;
-  overlay.classList.add('open');
-  if (overlay.requestFullscreen) overlay.requestFullscreen();
-  else if (overlay.webkitRequestFullscreen) overlay.webkitRequestFullscreen();
+function abrirPainel(url) {
+  // Salva URL do hub para botão voltar nos painéis
+  sessionStorage.setItem('pmo_hub_url', window.location.href);
+  // Fullscreen antes de navegar
+  const el = document.documentElement;
+  try {
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  } catch(e) {}
+  // Abre o painel na mesma aba
+  window.location.href = url;
 }
-
-function fecharPainel() {
-  document.getElementById('fsOverlay').classList.remove('open');
-  document.getElementById('fsFrame').src = '';
-  if (document.exitFullscreen) document.exitFullscreen();
-  else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharPainel(); });
 </script>
 </body>
 </html>
