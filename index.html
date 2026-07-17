@@ -104,6 +104,10 @@
   .card.c2 .card-icon { background: rgba(245,200,66,0.12); }
   .card.c3 .card-icon { background: rgba(96,165,250,0.12); }
   .card.c4 .card-icon { background: rgba(244,114,182,0.12); }
+  .card.c5::before { background: linear-gradient(90deg, #8b5cf6, #a855f7); }
+  .card.c5:hover { box-shadow: 0 12px 30px rgba(139,92,246,0.08); }
+  .card.c5 .card-icon { background: rgba(139,92,246,0.12); }
+  .card.c5 .card-tag { background: rgba(139,92,246,0.1); color: #8b5cf6; }
   .card-title { font-size: 14px; font-weight: 700; line-height: 1.2; }
   .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; flex: 1; }
   .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
@@ -201,7 +205,16 @@
       </div>
     </div>
 
-    <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
+    <div class="card c5" onclick="abrirPainel('https://villao123.github.io/gerador-certificados/')">
+      <div class="card-icon">📜</div>
+      <div class="card-title">Gerador de Certificados</div>
+      <div class="card-desc">Gere certificados de participação em PDF automaticamente. Suporta Excel ou entrada manual.</div>
+      <div class="card-footer">
+        <span class="card-tag">Certificados</span>
+        <span class="card-arrow">↗</span>
+      </div>
+    </div>
+
     <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
     <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
     <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
