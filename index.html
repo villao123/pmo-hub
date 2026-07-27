@@ -108,6 +108,10 @@
   .card.c5:hover { box-shadow: 0 12px 30px rgba(139,92,246,0.08); }
   .card.c5 .card-icon { background: rgba(139,92,246,0.12); }
   .card.c5 .card-tag { background: rgba(139,92,246,0.1); color: #8b5cf6; }
+  .card.c6::before { background: linear-gradient(90deg, #35B6B4, #006677); }
+  .card.c6:hover { box-shadow: 0 12px 30px rgba(53,182,180,0.08); }
+  .card.c6 .card-icon { background: rgba(53,182,180,0.12); }
+  .card.c6 .card-tag { background: rgba(53,182,180,0.1); color: #35B6B4; }
   .card-title { font-size: 14px; font-weight: 700; line-height: 1.2; }
   .card-desc { font-size: 11px; color: var(--muted); line-height: 1.5; flex: 1; }
   .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
@@ -215,7 +219,16 @@
       </div>
     </div>
 
-    <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
+    <div class="card c6" onclick="abrirPainel('https://villao123.github.io/governanca-projetos/')">
+      <div class="card-icon">🏛️</div>
+      <div class="card-title">Governança de Projetos</div>
+      <div class="card-desc">Cadastre a governança de cada projeto, gere o PPT padrão RQ-1028 e alimente o BI de impacto no PPR.</div>
+      <div class="card-footer">
+        <span class="card-tag">Governança</span>
+        <span class="card-arrow">↗</span>
+      </div>
+    </div>
+
     <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
     <div class="card-soon"><div class="soon-dot"></div><div class="soon-label">em breve</div></div>
 
